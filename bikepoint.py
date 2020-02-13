@@ -51,8 +51,8 @@ def search_loc(args):
 def search_radius(args):
     data =  tfl_connect()
     radius = args.radius
-    print(radius[0][3:])
-    print(radius[1][3:])
+    # print(radius[0][3:])
+    # print(radius[1][3:])
     try:
         print("{0:<50} {1:20} {2:<10} {3:<15} {4:<10}".format('NAME','ID','LONGITUDE','LATITUDE','DISTANCE'))
         for items in data:  
@@ -104,11 +104,13 @@ def search_bikepoint(args):
 
 
 def display_usage():
-    usage = "Usage:"
-    search = "londonbikes -s east | --search east "
-    radius = "londonbikes -r | --radius <latitude> <longitude> <radius_in_metres>"
-    bikepoint = "londonbikes --bikepoint <bike_point_id>"
-    print("{0}\n {1}\n {2}\n {3}".format(usage,search,radius,bikepoint), sys.argv[0])
+    usage = "usage: bikepoint [-h] [-s SEARCH] [-r RADIUS [RADIUS ...]] [-b BIKEPOINT]"
+    optional = "optional arguments:"
+    phelp = " -h, --help"
+    search = "-s SEARCH, --search SEARCH e.g: east, west, south, north"
+    radius = "-r RADIUS [RADIUS ...], --radius RADIUS [RADIUS ...] e.g: 51.51 -0.12 1"
+    bikepoint = "-b BIKEPOINT, --bikepoint BIKEPOINT e.g: BikePoints_50"
+    print("{0}\n\n {1}\n {2}\n {3}\n {4}\n {5}".format(usage,optional,phelp,search,radius,bikepoint), sys.argv[0])
 
 parser = argparse.ArgumentParser(prog='bikepoint')
 parser.add_argument('-s', '--search', type=str, help='e.g: east, west, south, north')
