@@ -110,17 +110,28 @@ def display_usage():
     bikepoint = "londonbikes --bikepoint <bike_point_id>"
     print("{0}\n {1}\n {2}\n {3}".format(usage,search,radius,bikepoint), sys.argv[0])
 
-parser = argparse.ArgumentParser(prog='bikepoint')
-parser.add_argument('-s', '--search', type=str, help='e.g: east, west, south, north')
-parser.add_argument('-r', '--radius', default=False, type=str, nargs='+', help='e.g: 51.51 -0.12 1')
-parser.add_argument('-b', '--bikepoint', default=False, type=str, help='e.g: BikePoints_50')
-args = parser.parse_args()
+def main(argv):
+    parser = argparse.ArgumentParser(prog='bikepoint')
+    parser.add_argument('-s', '--search', type=str, help='e.g: east, west, south, north')
+    parser.add_argument('-r', '--radius', default=False, type=str, nargs='+', help='e.g: 51.51 -0.12 1')
+    parser.add_argument('-b', '--bikepoint', default=False, type=str, help='e.g: BikePoints_50')
+    options = parser.parse_args(argv)
 
-if args.search:
-    search_loc(args)
-elif args.radius:
-    search_radius(args)
-elif args.bikepoint:
-    search_bikepoint(args)
-else:
-    (display_usage())
+    params = {}
+
+    if options.search:
+        print(params['search']) 
+        
+        
+    
+if __name__ == '__main__':
+  sys.exit(main(sys.argv[1:]))
+
+# if args.search:
+#     search_loc(args)
+# elif args.radius:
+#     search_radius(args)
+# elif args.bikepoint:
+#     search_bikepoint(args)
+# else:
+#     (display_usage())
