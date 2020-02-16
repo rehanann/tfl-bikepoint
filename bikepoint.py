@@ -118,6 +118,7 @@ parser.add_argument('-r', '--radius', default=False, type=str, nargs='+', help='
 parser.add_argument('-b', '--bikepoint', default=False, type=str, help='e.g: BikePoints_50')
 args = parser.parse_args()
 
+  
 if args.search:
     search_loc(args)
 elif args.radius:
